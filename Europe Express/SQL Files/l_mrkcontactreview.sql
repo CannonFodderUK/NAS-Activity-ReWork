@@ -1,0 +1,79 @@
+SET DEFINE OFF;
+CREATE TABLE L_MRKCONTACTREVIEW
+(
+  REVIEWID            NUMBER(10),
+  CONTACTID           NUMBER(10),
+  RESNUMBER           NUMBER(10),
+  ACTIVE              VARCHAR2(1 BYTE),
+  APPROVED            VARCHAR2(1 BYTE),
+  ISEMPLOYEE          VARCHAR2(1 BYTE),
+  DISPLAYNAME         VARCHAR2(100 BYTE),
+  RATING              VARCHAR2(50 BYTE),
+  MRKCONTREV_COMMENT  CLOB,
+  BRIEF               CLOB,
+  SHOWONSUPPLIER      VARCHAR2(1000 BYTE),
+  SHOWONTOC           VARCHAR2(1000 BYTE),
+  SHOWONPRODUCT       VARCHAR2(1000 BYTE),
+  SHOWONTOCSUBGROUP   VARCHAR2(1000 BYTE),
+  SHOWONMARKET        VARCHAR2(1000 BYTE),
+  REVIEWDATE          DATE,
+  BRANDS              VARCHAR2(250 BYTE),
+  ADDITIONALDATA      VARCHAR2(100 BYTE),
+  WHOSTAMP            VARCHAR2(50 BYTE),
+  DATESTAMP           DATE
+)
+LOB (MRKCONTREV_COMMENT) STORE AS (
+  TABLESPACE  DTW_ADV_TABLES
+  ENABLE      STORAGE IN ROW
+  CHUNK       16384
+  RETENTION
+  NOCACHE
+  LOGGING
+      STORAGE    (
+                  INITIAL          80K
+                  NEXT             1M
+                  MINEXTENTS       1
+                  MAXEXTENTS       UNLIMITED
+                  PCTINCREASE      0
+                  BUFFER_POOL      DEFAULT
+                  FLASH_CACHE      DEFAULT
+                  CELL_FLASH_CACHE DEFAULT
+                 ))
+LOB (BRIEF) STORE AS (
+  TABLESPACE  DTW_ADV_TABLES
+  ENABLE      STORAGE IN ROW
+  CHUNK       16384
+  RETENTION
+  NOCACHE
+  LOGGING
+      STORAGE    (
+                  INITIAL          80K
+                  NEXT             1M
+                  MINEXTENTS       1
+                  MAXEXTENTS       UNLIMITED
+                  PCTINCREASE      0
+                  BUFFER_POOL      DEFAULT
+                  FLASH_CACHE      DEFAULT
+                  CELL_FLASH_CACHE DEFAULT
+                 ))
+TABLESPACE DTW_ADV_TABLES
+RESULT_CACHE (MODE DEFAULT)
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          80K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
